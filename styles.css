@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Poppins:wght@300&display=swap');
+
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #bfbfbf, #f5f5f5);
+    position: relative;
+}
+
+.container {
+    max-width: 98vw;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    height: 90vh;
+}
+
+#playlist-container {
+    max-width: 40vw;
+    flex-grow: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-color: #fff;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#musicPlayer {
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+#musicPlayer img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; /* Adjust the margin based on your preference */
+}
+
+
+.controls button {
+    margin: 0 10px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    color: #333;
+    transition: background-color 0.3s;
+}
+
+.controls button:hover {
+    background-color: #ddd;
+}
+
+.controls button:active {
+    background-color: #ccc;
+}
+
+.progressBar {
+    background-color: #ddd;
+    height: 10px;
+    border-radius: 5px;
+    margin-top: 10px; /* Adjust the margin based on your preference */
+    width: 100%;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.progressBar:hover {
+    background-color: #ccc;
+    transform: scale(1.01);
+}
+
+.progressIndicator {
+    background-color: #333;
+    height: 100%;
+    border-radius: 5px;
+    width: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.3s;
+}
+
+.progressBar:hover .progressIndicator {
+    width: 10px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 1%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    margin-right: -5px; /* Center the dot vertically */
+}
+
+.controlButton {
+    width: 20vh;
+    height: 20vh;
+    margin: 10px 0;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #f5f5f5;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.controlButton:hover {
+    background-color: #ddd;
+    color: #000;
+}
+
+.controlButton:active {
+    background-color: #ccc;
+}
+
+.controlButton span {
+    font-size: 3em;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+#playPauseBtn {
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+#songTitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#albumArt {
+    display: block; /* Ensure it behaves as a block element */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+.overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px; /* Add padding for better appearance */
+    box-sizing: border-box; /* Include padding in the width */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px; /* Add padding for better appearance */
+    box-sizing: border-box; /* Include padding in the width */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 1; /* Set a higher z-index to ensure it's above other elements */
+}
+
+.shuffleAllButton {
+    padding: 15px;
+    background-color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.shuffleAllButton:hover {
+    background-color: #ddd;
+}
+
+.shuffleAllButton:active {
+    background-color: #ccc;
+}
+
+/* Modify this in your existing styles */
+#albumArtContainer {
+    max-height: 100%; /* Ensure the image doesn't exceed the container height */
+    overflow: hidden; /* Hide any overflow beyond the container */
+}
+
+#albumArt {
+    height: 100%; /* Make the image fill the container height */
+    width: auto; /* Maintain the aspect ratio */
+    border-radius: 8px;
+}

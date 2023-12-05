@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Flint</title>
+    <link rel="icon" type="image/x-icon" href="logo (2).png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="container">
+        <div id="playlist-container">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <ul id="playlist"></ul>
+        </div>
+        <div id="musicPlayer">
+            <!-- Inside the musicPlayer div -->
+            <div id="albumArtContainer">
+                <img id="albumArt" alt="Album Art">
+            </div>
+            <div id="songInfo">
+                <h2 id="songTitle"></h2>
+            </div>
+
+            <div id="audioPlayerContainer">
+                <audio id="audioPlayer" preload="metadata"></audio>
+                <div class="progressBar">
+                    <div class="progressIndicator"></div>
+                </div>
+            </div>  
+            <div class="controls">
+                <button id="prevBtn" class="controlButton"><span class="material-symbols-outlined">
+                    skip_previous
+                    </span></button>
+                <button id="playPauseBtn" class="controlButton"><span class="material-symbols-outlined">
+                    play_arrow
+                    </span></button>
+                <button id="nextBtn" class="controlButton"><span class="material-symbols-outlined">
+                    skip_next
+                    </span></button>
+            </div>
+
+        </div>
+        <div id="shuffleAllOverlay" class="overlay">
+            <button id="shuffleAllBtn" class="shuffleAllButton">Shuffle All</button>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

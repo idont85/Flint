@@ -1,0 +1,31 @@
+[
+    {
+        "title": "A Witch's Wail - Paper Lily",
+        "artist": "Crawk",
+        "src": "songs/fore.mp3",
+        "albumArt": "album_art/fore.jpg"
+    },
+    {
+        "title": "Miss Knives Theme - Paper Lily",
+        "artist": "Crawk",
+        "src": "songs/miss_knives_theme.mp3",
+        "albumArt": "album_art/fore.jpg"
+    },
+    {
+        "title": "Domino - SKZ",
+        "src": "songs/domino.mp3",
+        "albumArt": "album_art/noeasy.jpeg"
+    },
+    {
+        "title": "Strangers - Kenya Grace",
+        "src": "songs/strangers.mp3",
+        "albumArt": "album_art/strangers.png"
+    },
+    {
+        "title": "Five Night's At Freddy's (Remastered) - The Living Tombstone",
+        "src": "songs/five_nights_at_freddys_tlt.mp3",
+        "albumArt": "album_art/tlt.jpeg"
+    }
+
+
+]
