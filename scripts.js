@@ -73,11 +73,11 @@ document.addEventListener("DOMContentLoaded", function() {
         currentIndex = index;
         const selectedSong = playlist.children[index];
         const source = selectedSong.getAttribute('data-src');
-        const albumArtPath = selectedSong.getAttribute('data-album-art'); // Get album art path
+        const albumArtPath = selectedSong.getAttribute('data-album-art');
     
         audioPlayer.src = source;
-        albumArt.src = albumArtPath; // Set album art source
-        setAlbumArtSize(); // Set initial size
+        albumArt.src = albumArtPath;
+        setAlbumArtSize();
     
         const songTitle = document.getElementById('songTitle');
         songTitle.textContent = songsData[index].title;
@@ -85,6 +85,9 @@ document.addEventListener("DOMContentLoaded", function() {
         audioPlayer.play();
         isPlaying = true;
         updatePlayPauseButton();
+    
+        // Add an event listener for the 'ended' event to move to the next song
+        audioPlayer.addEventListener('ended', playNext);
     }
     
 
