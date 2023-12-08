@@ -1,31 +1,159 @@
 [
     {
-        "title": "A Witch's Wail - Paper Lily",
-        "artist": "Crawk",
-        "src": "https://github.com/idont85/Musico/raw/main/fore.mp3",
-        "albumArt": "album_art/fore.jpg"
+      "title": "A Witch's Wail - Paper Lily",
+      "artist": "Crawk",
+      "src": "https://github.com/idont85/Musico/raw/main/fore.mp3",
+      "albumArt": "album_art/fore.jpg"
     },
     {
-        "title": "Miss Knives Theme - Paper Lily",
-        "artist": "Crawk",
-        "src": "https://github.com/idont85/Musico/raw/main/miss_knives_theme.mp3",
-        "albumArt": "album_art/fore.jpg"
+      "title": "Miss Knives Theme - Paper Lily",
+      "artist": "Crawk",
+      "src": "https://github.com/idont85/Musico/raw/main/miss_knives_theme.mp3",
+      "albumArt": "album_art/fore.jpg"
     },
     {
-        "title": "Domino - SKZ",
-        "src": "https://github.com/idont85/Musico/raw/main/domino.mp3",
-        "albumArt": "album_art/noeasy.jpeg"
+      "title": "Domino - SKZ",
+      "src": "https://github.com/idont85/Musico/raw/main/domino.mp3",
+      "albumArt": "album_art/noeasy.jpeg"
     },
     {
-        "title": "Strangers - Kenya Grace",
-        "src": "https://github.com/idont85/Musico/raw/main/strangers.mp3",
-        "albumArt": "album_art/strangers.png"
+      "title": "Strangers - Kenya Grace",
+      "src": "https://github.com/idont85/Musico/raw/main/strangers.mp3",
+      "albumArt": "album_art/strangers.png"
     },
     {
-        "title": "Five Night's At Freddy's (Remastered) - The Living Tombstone",
-        "src": "https://github.com/idont85/Musico/raw/main/five_nights_at_freddys_tlt.mp3",
-        "albumArt": "album_art/tlt.jpeg"
+      "title": "Rune Theme - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Rune%20Theme%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Respite - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Respite%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Red's Treehouse 2 - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Red's%20Treehouse%202%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Miss Knives Theme - Paper Lily (2)",
+      "src": "https://github.com/idont85/Musico/raw/main/Miss%20Knives%20Theme%20-%20Paper%20Lily%20(2).mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Miss Knives (Memories) - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Miss%20Knives%20(Memories)%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Miss Knives (Memories) - Paper Lily (2)",
+      "src": "https://github.com/idont85/Musico/raw/main/Miss%20Knives%20(Memories)%20-%20Paper%20Lily%20(2).mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Lacies Lullaby (Main Track) - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Lacies%20Lullaby%20(Main%20Track)%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Home - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Home%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Home (3) - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Home%20(3)%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Home (2) - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Home%20(2)%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Hiro's Theme - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Hiro's%20Theme%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Cafe - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Cafe%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Burning Resolve - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Burning%20Resolve%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Burning Past - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Burning%20Past%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Awkward Exchange - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Awkward%20Exchange%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Against All Odds - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Against%20All%20Odds%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "A Single White Lily - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/A%20Single%20White%20Lily%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Voice of the Trees (Midnight) - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Voice%20of%20the%20Trees%20(Midnight)%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Voice of the Trees (Daylight) - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Voice%20of%20the%20Trees%20(Daylight)%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Unwelcome Guest - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Unwelcome%20Guest%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Unexpected Danger - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Unexpected%20Danger%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Train Station - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Train%20Station%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Lacies Theme (Alternate) - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Lacies%20Theme%20(Alternate)%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "The Last Thing You See - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/The%20Last%20Thing%20You%20See%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "The Facility - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/The%20Facility%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Shop Between Worlds - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Shop%20Between%20Worlds%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
+    },
+    {
+      "title": "Sai's Theme - Paper Lily",
+      "src": "https://github.com/idont85/Musico/raw/main/Sai's%20Theme%20-%20Paper%20Lily.mp3",
+      "albumArt": "album_art/fore.jpg"
     }
-
-
 ]
