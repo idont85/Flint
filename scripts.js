@@ -73,11 +73,11 @@ document.addEventListener("DOMContentLoaded", function() {
         currentIndex = index;
         const selectedSong = playlist.children[index];
         const source = selectedSong.getAttribute('data-src');
-        const albumArtPath = selectedSong.getAttribute('data-album-art');
+        const albumArtPath = selectedSong.getAttribute('data-album-art'); // Get album art path
     
         audioPlayer.src = source;
-        albumArt.src = albumArtPath;
-        setAlbumArtSize();
+        albumArt.src = albumArtPath; // Set album art source
+        setAlbumArtSize(); // Set initial size
     
         const songTitle = document.getElementById('songTitle');
         songTitle.textContent = songsData[index].title;
@@ -85,9 +85,6 @@ document.addEventListener("DOMContentLoaded", function() {
         audioPlayer.play();
         isPlaying = true;
         updatePlayPauseButton();
-    
-        // Add an event listener for the 'ended' event to move to the next song
-        audioPlayer.addEventListener('ended', playNext);
     }
     
 
@@ -110,6 +107,15 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function updatePlayPauseButton() {
+        audioPlayer.addEventListener('pause', () => {
+            isPlaying = false;
+            updatePlayPauseButton();
+        });
+    
+        audioPlayer.addEventListener('play', () => {
+            isPlaying = true;
+            updatePlayPauseButton();
+        });
         playPauseBtn.innerHTML = isPlaying ? '<span class="material-symbols-outlined">pause</span>' : '<span class="material-symbols-outlined">play_arrow</span>';
     }
 
