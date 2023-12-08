@@ -14,16 +14,36 @@ body {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
     display: flex;
     height: 90vh;
 }
 
 #playlist-container {
-    max-width: 40vw;
+    max-width: 35vw;
     flex-grow: 1;
     padding: 20px;
     box-sizing: border-box;
+    scroll-behavior: smooth;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#playlist-container::-webkit-scrollbar {
+    width: 8px;
+    transition-duration: 250ms;
+}
+
+#playlist-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Set the background color of the track */
+}
+
+#playlist-container::-webkit-scrollbar-thumb {
+    background-color: #cac7c7; /* Set the color of the thumb */
+    border-radius: 4px; /* Set the border-radius to round the corners of the thumb */
+}
+
+#playlist-container::-webkit-scrollbar-thumb:hover {
+    background-color: #a09b9b; /* Set a different color when the thumb is hovered */
 }
 
 input {
@@ -59,6 +79,7 @@ li {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    margin-left: 6.5vw;
 }
 
 #musicPlayer img {
@@ -74,7 +95,6 @@ li {
     align-items: center;
     margin-top: 10px; /* Adjust the margin based on your preference */
 }
-
 
 .controls button {
     margin: 0 10px;
@@ -108,7 +128,7 @@ li {
 
 .progressBar:hover {
     background-color: #ccc;
-    transform: scale(1.01);
+    transform: scale(1.03);
 }
 
 .progressIndicator {
@@ -165,10 +185,10 @@ li {
 
 .material-symbols-outlined {
     font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24;
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
 }
 
 #playPauseBtn {
@@ -181,21 +201,15 @@ li {
     font-weight: bold;
 }
 
-#albumArt {
-    display: block; /* Ensure it behaves as a block element */
-    margin: 0 auto; /* Center the image horizontally */
+#albumArtContainer {
+    max-height: 100%;
+    overflow: hidden;
 }
 
-.overlay {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px; /* Add padding for better appearance */
-    box-sizing: border-box; /* Include padding in the width */
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+#albumArt {
+    height: 100%;
+    width: auto;
+    border-radius: 8px;
 }
 
 .overlay {
@@ -203,42 +217,32 @@ li {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 10px; /* Add padding for better appearance */
-    box-sizing: border-box; /* Include padding in the width */
+    padding: 10px;
+    box-sizing: border-box;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    z-index: 1; /* Set a higher z-index to ensure it's above other elements */
+    z-index: 1;
 }
 
 .shuffleAllButton {
     padding: 15px;
-    background-color: #fff;
+    background-color: rgb(140, 136, 136);
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    color: #333;
+    color: white;
     margin-left: 20px;
     margin-bottom: 10px;
+    opacity: 90%;
+    transition-duration: 200ms;
 }
 
 .shuffleAllButton:hover {
-    background-color: #ddd;
+    background-color: rgb(87, 84, 84)
 }
 
 .shuffleAllButton:active {
-    background-color: #ccc;
-}
-
-/* Modify this in your existing styles */
-#albumArtContainer {
-    max-height: 100%; /* Ensure the image doesn't exceed the container height */
-    overflow: hidden; /* Hide any overflow beyond the container */
-}
-
-#albumArt {
-    height: 100%; /* Make the image fill the container height */
-    width: auto; /* Maintain the aspect ratio */
-    border-radius: 8px;
+    background-color: #636060;
 }
