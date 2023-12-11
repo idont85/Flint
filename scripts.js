@@ -12,26 +12,26 @@ document.addEventListener("DOMContentLoaded", function() {
     const shuffleAllBtn = document.getElementById('shuffleAllBtn');
     const albumArtContainer = document.getElementById('albumArtContainer');
     const albumArt = document.getElementById('albumArt');
+    const currentTimeElement = document.getElementById('currentTime');
+    const totalDurationElement = document.getElementById('totalDuration');
 
-
-    shuffleAllBtn.addEventListener('click', shuffleAll);
+    let updateTimeInteval;
     let songsData = [];
     let currentIndex = 0;
     let isPlaying = false;
+    let fadeInInterval;
+    let fadeOutInterval;
 
-    fetchPlaylist();
+    shuffleAllBtn.addEventListener('click', shuffleAll);
 
     function shuffleAll() {
-        // Implement your logic to shuffle all songs
-        // For example, you can shuffle the 'songsData' array and then update the playlist
         songsData = shuffleArray(songsData);
         displayPlaylist(songsData);
-        playSong(0); // Start playing the first shuffled song
+        playSong(0);
         hideShuffleOverlay();
     }
 
     function shuffleArray(array) {
-        // Function to shuffle an array (Fisher-Yates algorithm)
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
@@ -44,9 +44,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function hideShuffleOverlay() {
-        shuffleAllOverlay.style.display = 'block';
+        shuffleAllOverlay.style.display = 'none';
     }
-
 
     function fetchPlaylist() {
         fetch('songs.json')
@@ -63,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const li = document.createElement('li');
             li.textContent = song.title;
             li.setAttribute('data-src', song.src);
-            li.setAttribute('data-album-art', song.albumArt); // Added album art data attribute
+            li.setAttribute('data-album-art', song.albumArt);
             li.addEventListener('click', playSong.bind(null, index));
             playlist.appendChild(li);
         });
@@ -73,37 +72,69 @@ document.addEventListener("DOMContentLoaded", function() {
         currentIndex = index;
         const selectedSong = playlist.children[index];
         const source = selectedSong.getAttribute('data-src');
-        const albumArtPath = selectedSong.getAttribute('data-album-art'); // Get album art path
+        const albumArtPath = selectedSong.getAttribute('data-album-art');
+    
+        // Set volume to a low value initially
+        audioPlayer.volume = 0.1;
     
         audioPlayer.src = source;
-        albumArt.src = albumArtPath; // Set album art source
-        setAlbumArtSize(); // Set initial size
+        albumArt.src = albumArtPath;
+        setAlbumArtSize();
     
         const songTitle = document.getElementById('songTitle');
         songTitle.textContent = songsData[index].title;
     
         audioPlayer.play();
+    
+        fadeInInterval = setInterval(() => {
+            if (audioPlayer.volume < 1.0) {
+                audioPlayer.volume += 0.1;
+            } else {
+                clearInterval(fadeInInterval);
+            }
+        }, 300);
+    
         isPlaying = true;
         updatePlayPauseButton();
+        clearInterval(updateTimeInteval);
+        updateTimeInteval = setInterval(updateTimestamps, 1000);
+
+        // Set Media Session metadata for the current song
+        setMediaSessionMetadata(songsData[index]);
+        
+        // Set Media Session action handlers
+        setMediaSessionActions();
     }
-    
 
     function togglePlayPause() {
-        // Apply fade-out effect
         playPauseBtn.style.opacity = 0;
 
         setTimeout(() => {
             if (isPlaying) {
                 audioPlayer.pause();
+                // Gradually decrease the volume using a fade-out effect
+                fadeOutInterval = setInterval(() => {
+                    if (audioPlayer.volume > 0) {
+                        audioPlayer.volume -= 0.1;
+                    } else {
+                        clearInterval(fadeOutInterval);
+                    }
+                }, 300);
             } else {
                 audioPlayer.play();
+                // Gradually increase the volume using a fade-in effect
+                fadeInInterval = setInterval(() => {
+                    if (audioPlayer.volume < 1.0) {
+                        audioPlayer.volume += 0.1;
+                    } else {
+                        clearInterval(fadeInInterval);
+                    }
+                }, 300);
             }
             isPlaying = !isPlaying;
             updatePlayPauseButton();
-
-            // Apply fade-in effect
             playPauseBtn.style.opacity = 1;
-        }, 200); // Adjust the timing to match the CSS transition duration
+        }, 200);
     }
 
     function updatePlayPauseButton() {
@@ -111,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
             isPlaying = false;
             updatePlayPauseButton();
         });
-    
+
         audioPlayer.addEventListener('play', () => {
             isPlaying = true;
             updatePlayPauseButton();
@@ -126,16 +157,38 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function playNext() {
         currentIndex = (currentIndex + 1) % songsData.length;
-        playSong(currentIndex);
+        setTimeout(() => {
+            playSong(currentIndex);
+        }, 1500);
+    }
+
+    function updateTimestamps() {
+        if (!isNaN(audioPlayer.duration)) {
+            currentTimeElement.textContent = formatTime(audioPlayer.currentTime);
+            totalDurationElement.textContent = formatTime(audioPlayer.duration);
+        } else {
+            currentTimeElement.textContent = '--:--';
+            totalDurationElement.textContent = '--:--';
+        }
+    }
+
+    function formatTime(timeInSeconds) {
+        if (isNaN(timeInSeconds)) {
+            return '--:--';
+        }
+
+        const minutes = Math.floor(timeInSeconds / 60);
+        const seconds = Math.floor(timeInSeconds % 60);
+        return `${padNumber(minutes)}:${padNumber(seconds)}`;
+    }
+
+    function padNumber(number) {
+        return number.toString().padStart(2, '0');
     }
 
     function updateProgressBar() {
         const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
         progressIndicator.style.width = `${progress}%`;
-    }
-
-    function updateSongTitle(title) {
-        songTitleElement.textContent = title;
     }
 
     function setProgressBar(event) {
@@ -144,20 +197,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const progress = (clickX / progressBarRect.width) * 100;
         audioPlayer.currentTime = (progress / 100) * audioPlayer.duration;
     }
-
-    // Event listeners for player controls
-    playPauseBtn.addEventListener('click', togglePlayPause);
-    prevBtn.addEventListener('click', playPrevious);
-    nextBtn.addEventListener('click', playNext);
-
-    // Event listener for updating progress bar
-    audioPlayer.addEventListener('timeupdate', updateProgressBar);
-
-    // Event listener for clicking on progress bar
-    progressBar.addEventListener('click', setProgressBar);
-
-    // Event listener for search input
-    searchInput.addEventListener('input', handleSearch);
 
     function handleSearch() {
         const searchTerm = searchInput.value.toLowerCase();
@@ -171,24 +210,62 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function setAlbumArtSize() {
-        const albumArtContainer = document.getElementById('albumArtContainer');
-        const albumArt = document.getElementById('albumArt');
-        const maxWidth = albumArtContainer.clientWidth; // Maximum width of the container
-    
+        const maxWidth = albumArtContainer.clientWidth;
+
         const img = new Image();
         img.src = albumArt.src;
-    
+
         img.onload = function () {
             const aspectRatio = img.width / img.height;
-    
+
             let width = Math.min(img.width, maxWidth);
-            let height = width / aspectRatio;
-    
+            let height = width / aspectRatio
+
+;
+
             albumArt.style.width = width + 'px';
             albumArt.style.height = height + 'px';
         };
     }
 
-    // Call setAlbumArtSize on window resize to handle responsive sizing
+    function setMediaSessionMetadata(song) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: song.title,
+            artist: song.artist,
+            album: song.album,
+            artwork: [
+                { src: song.albumArt, sizes: '96x96', type: 'image/jpeg' },
+            ],
+        });
+    }
+
+    function setMediaSessionActions() {
+        navigator.mediaSession.setActionHandler('play', function() {
+            togglePlayPause();
+        });
+
+        navigator.mediaSession.setActionHandler('pause', function() {
+            togglePlayPause();
+        });
+
+        navigator.mediaSession.setActionHandler('previoustrack', function() {
+            playPrevious();
+        });
+
+        navigator.mediaSession.setActionHandler('nexttrack', function() {
+            playNext();
+        });
+    }
+
+    playPauseBtn.addEventListener('click', togglePlayPause);
+    prevBtn.addEventListener('click', playPrevious);
+    nextBtn.addEventListener('click', playNext);
+    progressBar.addEventListener('click', setProgressBar);
+    searchInput.addEventListener('input', handleSearch);
+
     window.addEventListener('resize', setAlbumArtSize);
+    audioPlayer.addEventListener('ended', playNext);
+    audioPlayer.addEventListener('timeupdate', updateProgressBar);
+
+    fetchPlaylist();
 });
