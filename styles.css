@@ -246,3 +246,11 @@ li {
 .shuffleAllButton:active {
     background-color: #636060;
 }
+
+.timeStamp {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; /* Adjust the margin based on your preference */
+    color: #333;
+    font-size: 14px;
+}
