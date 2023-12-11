@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Form</title>
+</head>
+<body>
+
+<button onclick="copyJson()">Copy JSON</button>
+
+<h2>Add Song</h2>
+<form id="songForm">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="artist">Artist:</label>
+    <input type="text" id="artist" name="artist" required>
+
+    <label for="src">Source (URL):</label>
+    <input type="url" id="src" name="src" required>
+
+    <label for="albumArt">Album Art (URL):</label>
+    <input type="url" id="albumArt" name="albumArt" required>
+
+    <button type="button" onclick="addSong()">Add Song</button>
+</form>
+
+<hr>
+
+<h2>Songs JSON</h2>
+<pre id="songsJson"></pre>
+
+<script>
+    let songsData = [];
+
+    // Load existing songs from songs.json
+    fetch('songs.json')
+        .then(response => response.json())
+        .then(data => {
+            songsData = data;
+            updateSongsJson();
+        });
+
+    function addSong() {
+        const title = document.getElementById('title').value;
+        const artist = document.getElementById('artist').value;
+        const src = document.getElementById('src').value;
+        const albumArt = document.getElementById('albumArt').value;
+
+        const newSong = {
+            title: title,
+            artist: artist,
+            src: src,
+            albumArt: albumArt
+        };
+
+        songsData.push(newSong);
+
+        // Save the updated songs array to songs.json
+        saveSongsToJson();
+
+        updateSongsJson();
+        resetForm();
+    }
+
+    function saveSongsToJson() {
+        // Convert the songs array to JSON and save it to songs.json
+        fetch('songs.json', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(songsData),
+        });
+    }
+
+    function updateSongsJson() {
+        const songsJson = document.getElementById('songsJson');
+        songsJson.textContent = JSON.stringify(songsData, null, 2);
+    }
+
+    function copyJson() {
+        const songsJson = document.getElementById('songsJson');
+        const textArea = document.createElement('textarea');
+        textArea.value = songsJson.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('JSON copied to clipboard!');
+    }
+
+    function resetForm() {
+        document.getElementById('title').value = '';
+        document.getElementById('artist').value = '';
+        document.getElementById('src').value = '';
+        document.getElementById('albumArt').value = '';
+    }
+</script>
+
+</body>
+</html>
